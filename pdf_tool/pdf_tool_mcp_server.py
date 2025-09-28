@@ -117,20 +117,20 @@ def open_and_split_pdf(file_path: str, start_page: int=1, end_page: int=1, save_
 
 
 def main():
-    # mcp.run(transport="http", host="127.0.0.1", port=8000)  # HTTP Transport (Streamable), turns the MCP server into a web service accessible via a URL, uses Streamable HTTP protocol, which allows clients to connect over the network.
-    # print("PDF-tool MCP server started and listening on STDIO...", file=sys.stderr)
-    # mcp.run()  # STDIO (Standard Input/Output) is the default transport for FastMCP servers, communications via standard input and output streams, started on-demand by the client.
-
+    """
+    Launch the MCP server that hosts the 2 MCP functions defined above. FastMCP will pick an available port automatically. 
+    LM-Studio will launch this file via the command you configured in *mcp.json*.
+    """
     try:
-        # 🚨 CRITICAL: Write to stderr immediately so LM Studio knows we're alive
+        # Write to stderr immediately so LM Studio knows we're alive
         print("PDF-tool MCP server starting...", file=sys.stderr)
 
-        # 🚨 OPTIONAL: Add a tiny delay if you have heavy imports (e.g., pypdf)
+        # OPTIONAL: Add a tiny delay if you have heavy imports (e.g., pypdf)
         # This gives LM Studio time to connect before your server is ready
         # Remove this in production if you don't need it.
         time.sleep(0.5)
 
-        # 🚨 Now start the server — this will block and wait for MCP messages
+        # Start the server — this will block and wait for MCP messages
         print("PDF-tool MCP server ready to receive requests...", file=sys.stderr)
         mcp.run(transport="stdio")
 
