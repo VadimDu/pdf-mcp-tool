@@ -43,11 +43,12 @@ If everything is working fine, you should see a message like this:
 Add the following to your `mcp.json` file:
 ```
 {
-  "name": "pdf-tool",
-  "description": "Extract pages from PDF files",
-  "command": [
-    "python",
-    "-m", "pdf_tool.pdf_tool_mcp_server_v1"
-  ]
+	"pdf-tool": {
+      "command": "python",
+      "args": [
+        "-m",
+        "pdf_tool.pdf_tool_mcp_server"
+      ]
+    }
 }
 ```
